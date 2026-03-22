@@ -8,7 +8,7 @@
         <img src="<%= listings.image.url %>" class="card-img-top show-img mt-2 mb-3" alt="listing_image">
 
         <div >
-            <p class="card-body"><i> Owned by <%= listings.owner.username  %></i></p>
+           
             <p class="card-body"><%= listings.description %></p> 
             <p class="card-body">&#8377;<%= listings.price.toLocaleString('en-IN') %></p>
             <p class="card-body"> <%= listings.location %></p> 
@@ -86,27 +86,5 @@
 
         </div>
     </div>
-<!-- STEP 1: Pass coordinates from backend -->
-   <script>
-  const coordinates = <%-JSON.stringify(listings.geometry.coordinates) %>
-  </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
 
-  const lat = coordinates[1]; 
-  const lng = coordinates[0]; 
-
-  const map = L.map('map').setView([lat, lng], 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup("<b><%= listings.title %></b>")
-    .openPopup();
-
-});
-
-</script>
+ 
